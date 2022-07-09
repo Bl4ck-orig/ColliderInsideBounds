@@ -16,6 +16,6 @@ The algorithm does the following:
 
 ![2](https://user-images.githubusercontent.com/38137603/178111354-94cb1fc7-4d45-4bff-aa06-f82b215ecdf3.png)
 
-3. Handle special case (TODO)
+3. Handle special case (TODO: adding buffers is sufficient)
 
 ![3](https://user-images.githubusercontent.com/38137603/178111366-99566f36-5533-439a-8cf9-e82fc04ef5ba.png)
