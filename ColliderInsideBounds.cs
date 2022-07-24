@@ -45,7 +45,7 @@ public static class ColliderInsideBounds
 
     private static Collider[] remove;
 
-    /// <summary>
+     /// <summary>
     /// Gets all colliders inside of bounds.
     /// Points need to be in clockwise or counterclockwise order for it to work!
     /// </summary>
@@ -73,7 +73,7 @@ public static class ColliderInsideBounds
         halfExtents = new Vector3(xSize * 0.5f, height, zSize * 0.5f);
 
         // Special case where input has to be validated.
-        if (Vector3.Dot(PerpendicularCounterClockwise((_b - _a).normalized).normalized, ((_a + _b) * 0.5f - center).normalized) < 0)
+        if (Vector3.Dot(Utils.PerpendicularCounterClockwise((_b - _a).normalized).normalized, ((_a + _b) * 0.5f - center).normalized) < 0)
         {
             rem = _b;
             _b = _d;
@@ -88,15 +88,15 @@ public static class ColliderInsideBounds
 
         coll = Physics.OverlapBox(center, halfExtents, Quaternion.identity, _layerMask);
 
-        abCenter = ((_a + _b) * 0.5f) + PerpendicularCounterClockwise(abNorm) * maxSizeHalf;
-        bcCenter = ((_b + _c) * 0.5f) + PerpendicularCounterClockwise(bcNorm) * maxSizeHalf;
-        cdCenter = ((_c + _d) * 0.5f) + PerpendicularCounterClockwise(cdNorm) * maxSizeHalf;
-        daCenter = ((_d + _a) * 0.5f) + PerpendicularCounterClockwise(daNorm) * maxSizeHalf;
+        abCenter = ((_a + _b) * 0.5f) + Utils.PerpendicularCounterClockwise(abNorm) * maxSizeHalf;
+        bcCenter = ((_b + _c) * 0.5f) + Utils.PerpendicularCounterClockwise(bcNorm) * maxSizeHalf;
+        cdCenter = ((_c + _d) * 0.5f) + Utils.PerpendicularCounterClockwise(cdNorm) * maxSizeHalf;
+        daCenter = ((_d + _a) * 0.5f) + Utils.PerpendicularCounterClockwise(daNorm) * maxSizeHalf;
 
-        abRotation = Quaternion.LookRotation(abNorm, Vector3.up);
-        bcRotation = Quaternion.LookRotation(bcNorm, Vector3.up);
-        cdRotation = Quaternion.LookRotation(cdNorm, Vector3.up);
-        daRotation = Quaternion.LookRotation(daNorm, Vector3.up);
+        abRotation = (abNorm != Vector3.zero) ? Quaternion.LookRotation(abNorm, Vector3.up) : Quaternion.identity;
+        bcRotation = (bcNorm != Vector3.zero) ? Quaternion.LookRotation(bcNorm, Vector3.up) : Quaternion.identity;
+        cdRotation = (cdNorm != Vector3.zero) ? Quaternion.LookRotation(cdNorm, Vector3.up) : Quaternion.identity;
+        daRotation = (daNorm != Vector3.zero) ? Quaternion.LookRotation(daNorm, Vector3.up) : Quaternion.identity;
 
         removeHalfExtents = new Vector3(maxSizeHalf, height, maxSizeHalf);
 
