@@ -106,7 +106,7 @@ public static class ColliderInsideBounds
         remove = remove.Concat(Physics.OverlapBox(daCenter, removeHalfExtents, daRotation, _layerMask)).ToArray();
         remove.Distinct();
 
-        return (from collider in coll where !remove.Contains(collider) select collider).ToArray();
+        return coll.Where(x => !remove.Contains(x)).ToArray();
     }
 
     /// <summary>
