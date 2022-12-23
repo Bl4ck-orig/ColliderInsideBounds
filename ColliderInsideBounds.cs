@@ -73,7 +73,7 @@ public static class ColliderInsideBounds
         halfExtents = new Vector3(xSize * 0.5f, height, zSize * 0.5f);
 
         // Special case where input has to be validated.
-        if (Vector3.Dot(Utils.PerpendicularCounterClockwise((_b - _a).normalized).normalized, ((_a + _b) * 0.5f - center).normalized) < 0)
+        if (Vector3.Dot(PerpendicularCounterClockwise((_b - _a).normalized).normalized, ((_a + _b) * 0.5f - center).normalized) < 0)
         {
             rem = _b;
             _b = _d;
