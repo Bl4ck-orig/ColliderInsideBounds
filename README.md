@@ -2,7 +2,9 @@
 
 Used for getting all colliders inside of bounds. Unity is used in the code.
 
-The start situation are four points as shown. For it to work assign all points in a way so that all points can be connected either clockwise or counter clockwise!
+The start situation is the four points as shown in the diagram. For it to work assign all points in a way so that all points can be connected either clockwise or counter clockwise!
+
+Also note that in order to improve performance, OverlapBoxNonAlloc should be used rather than OverlapBox, which is used in the code at the moment.
 
 ![Setup](https://user-images.githubusercontent.com/38137603/178146203-8eaa5b98-cdd7-4508-b996-f90a8c92b811.png)
 
